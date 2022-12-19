@@ -36,6 +36,7 @@ Do not expose any sensitive information. Do not log anything other than Object I
 `[Log Level] [Timestamp] [Correlation Id] [ServiceName] [ClassName.MethodName] [Log String] [Log Metadata]`
 
 * Correlation Id: This will be a uuid which the initiation of request will produce and this id will remains same throughout the request chain.
+  
   **NOTE: This field is optional or not required for independent services.**
 * Service Name: The name of the service.
 * Log String: Generally a message to print, while writing these you can consider thinking of following points (NOT MANDATORY):
