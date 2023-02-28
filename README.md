@@ -53,7 +53,13 @@ To improve the logging strategy for microservices (and multithreaded services), 
 * Avoid logging everything and anything, and instead focus on logging only the relevant details that will help with debugging.
 * Ensure that the log structure is regular throughout the service code.
 * Include log metadata that can provide additional context for log messages, such as request parameters and IP addresses.
-* Implement tools for log aggregation and analysis, such as Elasticsearch, Kibana, or Splunk. These tools can help to identify patterns, track requests, and gain insights into system behavior.
+* Implement tools for log aggregation, few recommendations are:
+    - [Elasticsearch, Logstash, and Kibana (ELK Stack)](https://aws.amazon.com/what-is/elk-stack/#:~:text=The%20ELK%20stack%20is%20an,Elasticsearch%2C%20Logstash%2C%20and%20Kibana.)
+    - [Grafana Loki](https://grafana.com/oss/loki/)
+    - [Logtail](https://betterstack.com/logtail)
+    - [Fluent bit](https://fluentbit.io/)
+   
+   These tools can help to identify patterns, track requests, and gain insights into system behavior.
 * By implementing these recommendations, you can improve the standardization and consistency of logs across microservices, as well as make them more useful for debugging and troubleshooting issues.
 
 #### Examples:
