@@ -11,12 +11,12 @@ Other than tracking we must have a clear description in logs, so that we can hav
 Now I guess you have a clear understanding of what problems we are trying to solve. It's time for principles:
 
 1. Understand the log levels clearly.
-2. Do not log anything and everything. Select log statements precisely.
-3. Must have a clear strategy around handled and unhandled errors. ERROR level logs must contain a stack trace.
-4. The INFO level must have some sense of story or procedure (without exposing any sensitive details).
-5. The DEBUG level must have all the necessary internal and sensitive details.
+2. **Do not log anything and everything**. Select log statements precisely.
+3. Must have a clear strategy around handled and unhandled errors. **ERROR level logs must contain a stack trace**.
+4. The INFO level must have some sense of story or procedure (**without exposing any sensitive details**).
+5. The DEBUG level **must have all the necessary internal and sensitive details**.
 6. Must write appropriate INFO and DEBUG level logs. This will help other developers while debugging the code.
-7. Every log (any level) must have a correlation ID (or request ID); this will help while tracing the logs across multiple instances of multiple services.
+7. Every log (any level) must have a **correlation ID (or request ID)**; this will help while tracing the logs across multiple instances of multiple services, also this will help in multi-threaded implementation as well.
 
 #### Log Levels
 
@@ -29,7 +29,7 @@ Now I guess you have a clear understanding of what problems we are trying to sol
 
 ⚠️ For ERROR, WARN and INFO ⚠️
 
-Do not expose any sensitive information. Do not log anything other than Object Id or Recource Id
+Do not expose any sensitive information. Do not log anything other than primary keys (user Id or so).
 
 #### Log Structure
 
@@ -43,24 +43,18 @@ Do not expose any sensitive information. Do not log anything other than Object I
 * Log String: A message that provides information about what happened, when it happened, where it happened, who was involved, where they came from, where to get more information, what is affected, and what will happen next. It is important to avoid logging everything and anything and to focus on logging only the relevant details that will help with debugging.
 * Log Metadata: Any essential information related to the log string, such as request parameters, IP addresses, and error stacks.
 
-#### Reparing Current Logging Strategy
+#### Improve Your Logging Strategy:
 
-Improving Logging Strategy:
+To improve the logging strategy for microservices (and multithreaded services), following recommendations can be considered:
 
-To improve the logging strategy for microservices, we recommend the following:
-
-Use the proposed log structure to ensure consistency across services.
-Include all log levels in each API, and use appropriate log levels for each log message.
-Write logs that can help with debugging while running the server locally or in a development environment.
-Avoid logging everything and anything, and instead focus on logging only the relevant details that will help with debugging.
-Ensure that the log structure is regular throughout the service code.
-Include log metadata that can provide additional context for log messages, such as request parameters and IP addresses.
-Implement tools for log aggregation and analysis, such as Elasticsearch, Kibana, or Splunk. These tools can help to identify patterns, track requests, and gain insights into system behavior.
-By implementing these recommendations, you can improve the standardization and consistency of logs across microservices, as well as make them more useful for debugging and troubleshooting issues.
-
-
-
-
+* Use the proposed log structure to ensure consistency across services.
+* Include all log levels in each API, and use appropriate log levels for each log message.
+* Write logs that can help with debugging while running the server locally or in a development environment.
+* Avoid logging everything and anything, and instead focus on logging only the relevant details that will help with debugging.
+* Ensure that the log structure is regular throughout the service code.
+* Include log metadata that can provide additional context for log messages, such as request parameters and IP addresses.
+* Implement tools for log aggregation and analysis, such as Elasticsearch, Kibana, or Splunk. These tools can help to identify patterns, track requests, and gain insights into system behavior.
+* By implementing these recommendations, you can improve the standardization and consistency of logs across microservices, as well as make them more useful for debugging and troubleshooting issues.
 
 #### Examples:
 
@@ -256,7 +250,7 @@ Console
 
 **Debug Logs Example:** While reading the below example keep the quoted lines in mind,
 
-> *&quot;Potentially harmful situations of interest to end users or system managers that indicate potential problems.&quot;*
+> *&quot;Highly detailed tracing messages. Produces the most voluminous output.&quot;*
 
 ```js
 function processPayment(upiId, upiPin, amount, userId) {
