@@ -33,43 +33,34 @@ Do not expose any sensitive information. Do not log anything other than Object I
 
 #### Log Structure
 
-`[Log Level] [Timestamp] [Correlation Id] [ServiceName] [ClassName.MethodName] [Log String] [Log Metadata]`
+`[Log Level] [Timestamp] [Correlation Id] [Service Name] [Class Name.Method Name] [Log String] [Log Metadata]`
 
-* Correlation Id: This will be a uuid which the initiation of request will produce and this id will remains same throughout the request chain.
-  
-  **NOTE: This field is optional or not required for independent services.**
-* Service Name: The name of the service.
-* Log String: Generally a message to print, while writing these you can consider thinking of following points (NOT MANDATORY):
-
-  * What happened (with appropriate detail; “Something happened” is not
-    generally useful).
-  * When did it happen (and when did it start and end, if relevant).
-  * Where did it happen (on what host, what file system, which network
-    interface, etc.).
-  * Who was involved.
-  * Where he, she or it came from.
-  * Where do I get more information.?????
-  * How certain should I be that the above is really what happened?
-  * What is affected. (Hint !!)
-  * What will happen next.
-* Log Metadata: Any essential information related to **log string**
-
-  * request params (For request recieved on controller)
-  * IP from where the request is recieved
-  * successful execution response of every subtask
-  * can include error stacks etc.
-
+* Log Level: The severity level of the log message, such as DEBUG, INFO, WARN, or ERROR.
+* Timestamp: The time at which the log message was created.
+* Correlation Id: A universally unique identifier (UUID) that is generated for each request and remains the same throughout the request chain. This allows logs to be traced across different services.
+* Service Name: The name of the service that generated the log message.
+* Class Name.Method Name: The name of the class and method that generated the log message.
+* Log String: A message that provides information about what happened, when it happened, where it happened, who was involved, where they came from, where to get more information, what is affected, and what will happen next. It is important to avoid logging everything and anything and to focus on logging only the relevant details that will help with debugging.
+* Log Metadata: Any essential information related to the log string, such as request parameters, IP addresses, and error stacks.
 
 #### Reparing Current Logging Strategy
 
-While reparing logs you must consider below points:
+Improving Logging Strategy:
 
-* All log levels should be present in each API. While writing logs along with appropriate log level thinking process should be:
+To improve the logging strategy for microservices, we recommend the following:
 
-  * Write logs that can help you debugging the issue while running server locally or in dev environment.
-  * Don't log anything and everything.
-* Apply log levels as mentioned in the above table.
-* Log Structure should be regular throughout the service (code).
+Use the proposed log structure to ensure consistency across services.
+Include all log levels in each API, and use appropriate log levels for each log message.
+Write logs that can help with debugging while running the server locally or in a development environment.
+Avoid logging everything and anything, and instead focus on logging only the relevant details that will help with debugging.
+Ensure that the log structure is regular throughout the service code.
+Include log metadata that can provide additional context for log messages, such as request parameters and IP addresses.
+Implement tools for log aggregation and analysis, such as Elasticsearch, Kibana, or Splunk. These tools can help to identify patterns, track requests, and gain insights into system behavior.
+By implementing these recommendations, you can improve the standardization and consistency of logs across microservices, as well as make them more useful for debugging and troubleshooting issues.
+
+
+
+
 
 #### Examples:
 
